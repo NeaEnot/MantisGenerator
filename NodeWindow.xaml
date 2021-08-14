@@ -1,0 +1,15 @@
+﻿<Window x:Class="MantisGenerator.NodeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MantisGenerator"
+        mc:Ignorable="d"
+        Title="Узел" Height="119" Width="273">
+    <Grid>
+        <TextBox Name="textTitle" Margin="104,10,10,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,11,0,0" Text="Название" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button Content="Сохранить" HorizontalAlignment="Center" Margin="0,62,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+
+    </Grid>
+</Window>
