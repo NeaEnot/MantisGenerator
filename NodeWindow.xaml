@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MantisGenerator"
         mc:Ignorable="d"
-        Title="Узел" Height="119" Width="273">
+        Title="Узел" Height="179" Width="273">
     <Grid>
-        <TextBox Name="textTitle" Margin="104,10,10,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox Name="textName" Margin="104,10,10,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,11,0,0" Text="Название" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Button Content="Сохранить" HorizontalAlignment="Center" Margin="0,62,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="Сохранить" HorizontalAlignment="Center" Margin="0,122,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <CheckBox Name="checkActive" HorizontalAlignment="Left" Margin="104,0,0,0" VerticalAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" Text="Активный" TextWrapping="Wrap" VerticalAlignment="Center"/>
+        <TextBox Name="textProbability" Margin="104,33,10,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,34,0,0" Text="Вероятность" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
