@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MantisGenerator"
         mc:Ignorable="d"
-        Title="Узел" Height="179" Width="273">
+        Title="Узел" Height="155" Width="300" MinHeight="155" MinWidth="300" MaxHeight="160" MaxWidth="600">
     <Grid>
         <TextBox Name="textName" Margin="104,10,10,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,11,0,0" Text="Название" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Button Content="Сохранить" HorizontalAlignment="Center" Margin="0,122,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <CheckBox Name="checkActive" HorizontalAlignment="Left" Margin="104,0,0,0" VerticalAlignment="Center"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" Text="Активный" TextWrapping="Wrap" VerticalAlignment="Center"/>
+        <Button Content="Сохранить" HorizontalAlignment="Center" Margin="0,0,0,13" Click="Button_Click" Height="25" VerticalAlignment="Bottom"/>
+        <CheckBox Name="checkActive" HorizontalAlignment="Left" Margin="104,56,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,56,0,0" Text="Активный" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox Name="textProbability" Margin="104,33,10,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,34,0,0" Text="Вероятность" TextWrapping="Wrap" VerticalAlignment="Top"/>
 

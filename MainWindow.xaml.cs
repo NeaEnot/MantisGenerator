@@ -9,19 +9,13 @@ namespace MantisGenerator
 {
     public partial class MainWindow : Window
     {
-        private Node root;
+        private Tree tree;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            root = new Node();
-            root.Children.Add(new Node { Name = "Первыф", Probability = 3, IsActive = true });
-            root.Children.Add(new Node { Name = "Фторой", Probability = 1, IsActive = true });
-            root.Children[0].Children.Add(new Node { Name = "Трефий", Probability = 1, IsActive = true });
-            root.Children[0].Children.Add(new Node { Name = "Четфёрфый", Probability = 1, IsActive = true });
-            root.Children[1].Children.Add(new Node { Name = "Пяфый", Probability = 1, IsActive = true });
-            root.Children[0].Children[0].Children.Add(new Node { Name = "Фестой", Probability = 1, IsActive = true });
+            tree = new Tree();
         }
 
         private void treeView_Loaded(object sender, RoutedEventArgs e)
@@ -33,7 +27,7 @@ namespace MantisGenerator
         {
             treeView.ItemsSource = null;
             treeView.Items.Clear();
-            treeView.ItemsSource = root.Children;
+            treeView.ItemsSource = tree.Root.Children;
         }
 
         private void treeView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -43,32 +37,35 @@ namespace MantisGenerator
 
         private void buttonAdd_Click(object sender, RoutedEventArgs e)
         {
-            Node selected = (Node)treeView.SelectedItem ?? root;
+            Node selected = (Node)treeView.SelectedItem ?? tree.Root;
 
             NodeWindow nodeWindow = new NodeWindow(null);
             if (nodeWindow.ShowDialog() == true)
             {
                 selected.Children.Add(nodeWindow.Node);
+                tree.Save();
                 LoadData();
             }
         }
 
         private void buttonUpdate_Click(object sender, RoutedEventArgs e)
         {
-            Node selected = (Node)treeView.SelectedItem ?? root;
+            Node selected = (Node)treeView.SelectedItem ?? tree.Root;
 
             NodeWindow nodeWindow = new NodeWindow(selected);
             if (nodeWindow.ShowDialog() == true)
             {
+                tree.Save();
                 LoadData();
             }
         }
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-            Node selected = (Node)treeView.SelectedItem ?? root;
-            if (root.Delete(selected))
+            Node selected = (Node)treeView.SelectedItem ?? tree.Root;
+            if (tree.Delete(selected))
             {
+                tree.Save();
                 LoadData();
             }
         }
@@ -78,7 +75,7 @@ namespace MantisGenerator
             Random rnd = new Random();
             string msg = "";
 
-            Node currentNode = root;
+            Node currentNode = tree.Root;
 
             while (currentNode.Children.Count > 0)
             {
