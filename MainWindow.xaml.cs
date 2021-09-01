@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace MantisGenerator
@@ -24,11 +25,54 @@ namespace MantisGenerator
 
         private void LoadData()
         {
+            Dictionary<Node, bool> dict = new Dictionary<Node, bool>();
+
+            foreach (Node child in tree.Root.Children)
+            {
+                SaveItemState(dict, child);
+            }
+
             tree.Sort();
 
             treeView.ItemsSource = null;
             treeView.Items.Clear();
             treeView.ItemsSource = tree.Root.Children;
+
+            foreach (Node child in tree.Root.Children)
+            {
+                SetItemState(dict, child);
+            }
+        }
+
+        private void SaveItemState(Dictionary<Node, bool> dict, Node item)
+        {
+            DependencyObject container = treeView.ItemContainerGenerator.ContainerFromItem(item);
+            if (container != null && container is TreeViewItem)
+            {
+                dict.Add(item, (container as TreeViewItem).IsExpanded);
+
+                foreach (Node child in item.Children)
+                {
+                    SaveItemState(dict, child);
+                }
+            }
+        }
+
+        private void SetItemState(Dictionary<Node, bool> dict, Node item)
+        {
+            if (dict.ContainsKey(item))
+            {
+                DependencyObject container = treeView.ItemContainerGenerator.ContainerFromItem(item);
+                if (container != null && container is TreeViewItem)
+                {
+                    (container as TreeViewItem).IsExpanded = dict[item];
+
+                    foreach (Node child in item.Children)
+                    {
+                        SetItemState(dict, child);
+                    }
+                }
+            }
         }
 
         private void treeView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
