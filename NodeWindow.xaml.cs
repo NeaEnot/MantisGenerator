@@ -17,7 +17,6 @@ namespace MantisGenerator
             {
                 textName.Text = Node.Name;
                 textProbability.Text = Node.Probability.ToString();
-                checkActive.IsChecked = Node.IsActive;
             }
         }
 
@@ -40,7 +39,6 @@ namespace MantisGenerator
 
                 Node.Name = textName.Text;
                 Node.Probability = int.Parse(textProbability.Text);
-                Node.IsActive = checkActive.IsChecked.Value;
 
                 DialogResult = true;
             }

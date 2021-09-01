@@ -12,6 +12,21 @@ namespace MantisGenerator.Models
             Load();
         }
 
+        public void Sort()
+        {
+            Sort(Root);
+        }
+
+        private void Sort(Node current)
+        {
+            current.Children.Sort((node1, node2) => string.Compare(node1.Name, node2.Name));
+
+            foreach (Node child in current.Children)
+            {
+                Sort(child);
+            }
+        }
+
         public bool Delete(Node node)
         {
             return Root.Delete(node);

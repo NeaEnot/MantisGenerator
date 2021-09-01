@@ -6,9 +6,10 @@ namespace MantisGenerator.Models
     {
         public string Name { get; set; }
         public int Probability { get; set; }
-        public bool IsActive { get; set; }
 
-        public List<Node> Children { get; }
+        public List<Node> Children { get; private set; }
+
+        public string Color { get { return Probability > 0 ? "Black" : "Gray"; } }
 
         public Node()
         {

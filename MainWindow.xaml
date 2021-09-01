@@ -11,7 +11,7 @@
             <TreeView Name="treeView" Margin="0,0,0,0" Loaded="treeView_Loaded" MouseDoubleClick="treeView_MouseDoubleClick">
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
-                        <TextBlock Text="{Binding Name}" FontSize="18"/>
+                        <TextBlock Text="{Binding Name}" FontSize="18" Foreground="{Binding Color}"/>
                     </HierarchicalDataTemplate>
                 </TreeView.ItemTemplate>
             </TreeView>

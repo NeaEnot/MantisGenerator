@@ -1,7 +1,6 @@
 ﻿using MantisGenerator.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
@@ -25,6 +24,8 @@ namespace MantisGenerator
 
         private void LoadData()
         {
+            tree.Sort();
+
             treeView.ItemsSource = null;
             treeView.Items.Clear();
             treeView.ItemsSource = tree.Root.Children;
@@ -81,12 +82,18 @@ namespace MantisGenerator
             {
                 List<Node> list = new List<Node>();
 
-                foreach (Node node in currentNode.Children.Where(req => req.IsActive))
+                foreach (Node node in currentNode.Children)
                 {
                     for (int i = 0; i < node.Probability; i++)
                     {
                         list.Add(node);
                     }
+                }
+
+                if (list.Count == 0)
+                {
+                    msg += "!! Все дочерние элементы этого узла неактивны !!";
+                    break;
                 }
 
                 currentNode = list[rnd.Next(0, list.Count)];
