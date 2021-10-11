@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MantisGenerator" Height="396" Width="525" MinHeight="350" MinWidth="550">
     <Grid>
-        <ScrollViewer Margin="0,0,0,50">
+        <ScrollViewer Margin="17,0,0,50">
             <TreeView Name="treeView" Margin="0,0,0,0" Loaded="treeView_Loaded" MouseDoubleClick="treeView_MouseDoubleClick">
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
@@ -20,6 +20,7 @@
         <Button Name="buttonUpdate" Content="Изменить" HorizontalAlignment="Left" Margin="113,0,0,10" Width="98" Click="buttonUpdate_Click" Height="24" VerticalAlignment="Bottom"/>
         <Button Name="buttonDelete" Content="Удалить" HorizontalAlignment="Left" Margin="216,0,0,10" Width="98" Click="buttonDelete_Click"  Height="24" VerticalAlignment="Bottom"/>
         <Button Name="buttonGenerate" Content="Выбрать" Margin="0,0,10,10" Click="buttonGenerate_Click"  Height="24" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="98"/>
+        <Label Content="" HorizontalAlignment="Left" Margin="0,0,0,50" AllowDrop="True" Drop="treeView_Drop" Width="17"/>
 
     </Grid>
 </Window>

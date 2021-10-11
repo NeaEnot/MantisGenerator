@@ -175,7 +175,7 @@ namespace MantisGenerator
             Node target = (sender as TextBlock).DataContext as Node;
             Node source = e.Data.GetData(typeof(Node)) as Node;
 
-            if (!source.Contains(target))
+            if (target != source && !source.Contains(target))
             {
                 tree.Delete(source);
 
@@ -183,6 +183,15 @@ namespace MantisGenerator
 
                 LoadData();
             }
+        }
+
+        private void treeView_Drop(object sender, DragEventArgs e)
+        {
+            Node source = e.Data.GetData(typeof(Node)) as Node;
+
+            tree.Delete(source);
+            tree.Root.Children.Add(source);
+            LoadData();
         }
     }
 }
