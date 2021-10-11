@@ -29,6 +29,12 @@ namespace MantisGenerator.Models
 
         public bool Delete(Node node)
         {
+            if (node == Root)
+            {
+                Root = new Node();
+                return true;
+            }    
+
             return Root.Delete(node);
         }
 

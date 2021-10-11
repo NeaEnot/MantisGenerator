@@ -109,6 +109,28 @@ namespace MantisGenerator
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
             Node selected = (Node)treeView.SelectedItem ?? tree.Root;
+
+            if (selected == tree.Root)
+            {
+                MessageBoxResult questionResult = 
+                    MessageBox.Show("Вы собираетесь удалить всё дерево?", 
+                                    "Результат", 
+                                    MessageBoxButton.OKCancel, 
+                                    MessageBoxImage.Question);
+
+                if (questionResult == MessageBoxResult.Yes)
+                    return;
+
+                questionResult =
+                    MessageBox.Show("Вы действительно хотите удалить всё дерево? Отмена не предусмотрена!",
+                                    "Результат",
+                                    MessageBoxButton.OKCancel,
+                                    MessageBoxImage.Question);
+
+                if (questionResult == MessageBoxResult.Yes)
+                    return;
+            }
+
             if (tree.Delete(selected))
             {
                 tree.Save();
@@ -121,25 +143,18 @@ namespace MantisGenerator
             Random rnd = new Random();
             string msg = "";
 
-            Node currentNode = tree.Root;
+            Node currentNode = (Node)treeView.SelectedItem ?? tree.Root;
 
             while (currentNode.Children.Count > 0)
             {
                 List<Node> list = new List<Node>();
 
                 foreach (Node node in currentNode.Children)
-                {
                     for (int i = 0; i < node.Probability; i++)
-                    {
                         list.Add(node);
-                    }
-                }
 
                 if (list.Count == 0)
-                {
-                    msg += "!! Все дочерние элементы этого узла неактивны !!";
                     break;
-                }
 
                 currentNode = list[rnd.Next(0, list.Count)];
                 msg += currentNode.Name + '\n';
