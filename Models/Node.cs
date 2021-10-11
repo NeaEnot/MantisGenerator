@@ -16,6 +16,22 @@ namespace MantisGenerator.Models
             Children = new List<Node>();
         }
 
+        public bool Contains(Node node)
+        {
+            if (Children.Contains(node))
+            {
+                return true;
+            }
+            else
+            {
+                foreach (Node child in Children)
+                    if (child.Contains(node))
+                        return true;
+            }
+
+            return false;
+        }
+
         public bool Delete(Node node)
         {
             if (Children.Contains(node))

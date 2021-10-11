@@ -162,5 +162,27 @@ namespace MantisGenerator
 
             MessageBox.Show(msg, "Результат", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Node node = (sender as TextBlock).DataContext as Node;
+
+            DragDrop.DoDragDrop(sender as TextBlock, node, DragDropEffects.Copy);
+        }
+
+        private void TextBlock_Drop(object sender, DragEventArgs e)
+        {
+            Node target = (sender as TextBlock).DataContext as Node;
+            Node source = e.Data.GetData(typeof(Node)) as Node;
+
+            if (!source.Contains(target))
+            {
+                tree.Delete(source);
+
+                target.Children.Add(source);
+
+                LoadData();
+            }
+        }
     }
 }
