@@ -27,4 +27,4 @@ In this case, it would be more convenient to use a tree structure, for each node
 
 To create a node at the root of the tree, click on the "Create" button. To create a child node, select the parent node and click on the "Create" button. To delete a node and all its descendants, select the node of interest and click "Delete". When creating/editing a node, its name and the probability of its selection are set (you can set 0 to disable it). All information is stored in the storage file.json in the program directory.
 
-You can download the application from the link.
+You can download the application from the [link](https://disk.yandex.ru/d/WPVKl2FdgsYT-g).
